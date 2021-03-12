@@ -38,11 +38,16 @@ void ClientActive( edict_t *pEdict, bool bLoadGame )
 
 const char *GetGameDescription()
 {
-	if ( g_pGameRules ) // this function may be called before the world has spawned, and the game rules initialized
+	if ( g_pGameRules )
+	{
+		// This function may be called before the world
+		// has spawned, and the game rules initialized
 		return g_pGameRules->GetGameDescription();
+	}
 	else
+	{
 		return "Half-Life 2: Redux";
-}
+	}
 
 CBaseEntity *FindEntity( edict_t *pEdict, char *classname )
 {
