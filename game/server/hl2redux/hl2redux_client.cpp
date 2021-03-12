@@ -1,13 +1,7 @@
 #include "cbase.h"
 #include "hl2redux_player.h"
-#include "hl2_gamerules.h"
-#include "gamerules.h"
-#include "teamplay_gamerules.h"
-#include "entitylist.h"
-#include "physics.h"
+#include "hl2redux_gamerules.h"
 #include "game.h"
-#include "player_resource.h"
-#include "engine/IEngineSound.h"
 
 // memdbgon must be the last include file in a .cpp file!!!
 #include "tier0/memdbgon.h"
@@ -48,14 +42,15 @@ const char *GetGameDescription()
 	{
 		return "Half-Life 2: Redux";
 	}
+}
 
-CBaseEntity *FindEntity( edict_t *pEdict, char *classname )
+CBaseEntity *FindEntity( edict_t *pEdict, char *pszClassName )
 {
 	// If no name was given set bits based on the picked
-	if ( FStrEq( classname, "" ) )
-		return ( FindPickerEntityClass( static_cast<CBasePlayer *>( GetContainingEntity( pEdict ) ), classname ) );
+	if ( FStrEq( pszClassName, "" ) )
+		return ( FindPickerEntityClass( static_cast<CBasePlayer *>( GetContainingEntity( pEdict ) ), pszClassName ) );
 
-	return NULL;
+	return nullptr;
 }
 
 void ClientGamePrecache( void )
@@ -78,11 +73,11 @@ void ClientGamePrecache( void )
 }
 
 // Called by ClientKill and DeadThink
-void respawn( CBaseEntity *pEdict, bool fCopyCorpse )
+void respawn( CBaseEntity *pEdict, bool bCopyCorpse )
 {
 	if ( gpGlobals->coop || gpGlobals->deathmatch )
 	{
-		if ( fCopyCorpse )
+		if ( bCopyCorpse )
 		{
 			// Make a copy of the dead body for appearances sake
 			static_cast<CHL2ReduxPlayer *>( pEdict )->CreateCorpse();
@@ -115,7 +110,6 @@ void InstallGameRules()
 	}
 	else
 	{
-		// generic half-life
-		CreateGameRulesObject( "CHalfLife2" );
+		CreateGameRulesObject( "CHL2ReduxGameRules" );
 	}
 }
