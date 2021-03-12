@@ -3,10 +3,10 @@
 
 LINK_ENTITY_TO_CLASS( hl2redux_player, CHL2ReduxPlayer );
 
-IMPLEMENT_SERVERCLASS_ST(CHL2ReduxPlayer, DT_HL2ReduxPlayer)
+IMPLEMENT_SERVERCLASS_ST( CHL2ReduxPlayer, DT_HL2ReduxPlayer )
 END_SEND_TABLE()
 
-BEGIN_DATADESC(CHL2ReduxPlayer)
+BEGIN_DATADESC( CHL2ReduxPlayer )
 END_DATADESC()
 
 CHL2ReduxPlayer *CHL2ReduxPlayer::Create( edict_t *pEdict )

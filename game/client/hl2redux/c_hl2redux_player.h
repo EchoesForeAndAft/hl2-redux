@@ -11,8 +11,7 @@ class C_HL2ReduxPlayer : public C_BaseHLPlayer
 	DECLARE_DATADESC();
 
 public:
-
-//	void Spawn() override;
+	//	void Spawn() override;
 };
 
 #endif // C_HL2REDUX_PLAYER_H

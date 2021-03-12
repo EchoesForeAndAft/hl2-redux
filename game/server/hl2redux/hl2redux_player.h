@@ -11,10 +11,9 @@ class CHL2ReduxPlayer : public CHL2_Player
 	DECLARE_DATADESC();
 
 public:
-
 	static CHL2ReduxPlayer *Create( edict_t *pEdict );
 
-//	void Spawn() override;
+	//	void Spawn() override;
 };
 
 #endif // HL2REDUX_PLAYER_H
